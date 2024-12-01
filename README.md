@@ -1,6 +1,4 @@
-Final Project
- 
-Geog 213: Advanced Geospatial Analytics w/ Python
+Geog 213 Advanced Geospatial Analytics w/ Python - Final Project
 
 
 2020 Census Block Maps and US Structures from Oak Ridge National Laboratory data sets
