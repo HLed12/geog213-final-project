@@ -36,14 +36,12 @@ def get_s3_keys(bucket_name, prefix, client):
     return keys  
 
                   
-def get_google_microsoft_bldgs(country_code, s3_client, local_path, blocksize="256M"):
+def get_google_microsoft_bldgs(s3_client, local_path, blocksize="256M"):
     """
     This function download geoparquet files from the Google Microsoft Building Footprint - Combined by VIDA dataset hosted on Source Cooperative (https://source.coop/repositories/vida/google-microsoft-open-buildings/description). 
     
     Inputs:
     --------
-    country_code: string
-        Target country's name in ISO Alpha-3 format
     s3_client: boto3 resource client
         A boto3 resource client configured with AWS credentials and the endpoint_url for Source Cooperative
     local_path: string
@@ -58,10 +56,15 @@ def get_google_microsoft_bldgs(country_code, s3_client, local_path, blocksize="2
         
     """
     
-    bucket_name = 'vida'
-    prefix = "google-microsoft-open-buildings/geoparquet/by_country/country_iso="
-    country_prefix = f"{prefix}{country_code}"
-    keys = get_s3_keys(bucket_name, country_prefix, s3_client)
+    ### THIS IS CURRENTLY TESTING FOR A SINGLE FILE< WE WILL NEED TO FIGURE OUT HOW TO SIMPLY GO THROUGH PAGE AND DOWNLAOD THEM ALL
+    # Maybe there is a way to download anything with AT LEAST the prefix. ??
+    bucket_name = 'wherobots'  # (Bucket name is the account the posted the dataset)?
+    prefix = "wherobots/usa-structures/geoparquet/part-"
+    parquet_code = "00000"
+    endfix = "-0e550d15-2c27-4b72-8522-a4b856ab26dc-c000.zstd.parquet"
+    entire_prefix = f"{prefix}{parquet_code}{endfix}"
+
+    keys = get_s3_keys(bucket_name, entire_prefix, s3_client)
 
     for key in keys:
         local_fname = f"{local_path}/{key.split("/")[-1]}"
@@ -87,6 +90,9 @@ def get_google_microsoft_bldgs(country_code, s3_client, local_path, blocksize="2
         else:
             print("File already exists locally. No download needed.")
 
-    bldg_ddf = dg.read_parquet(f"./data/{country_code}*.parquet", gather_spatial_partitions=False, blocksize = blocksize)
+    # MAKE A LIST WITH EACH LINK
+
+    
+    bldg_ddf = dg.read_parquet(f"./data/{country_code}*.parquet", gather_spatial_partitions=False, blocksize = blocksize)  # INSTEAD THIS READs A LIST
 
     return bldg_ddf
