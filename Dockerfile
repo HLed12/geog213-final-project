@@ -8,8 +8,8 @@ COPY environment.yml /home/environment.yml
 RUN conda env create -f /home/environment.yml
 
 # Activate the Conda environment
-RUN echo "conda activate assignment-7" >> ~/.bashrc
-ENV PATH="$PATH:/opt/conda/envs/assignment-7/bin"
+RUN echo "conda activate building-footprint-analysis" >> ~/.bashrc
+ENV PATH="$PATH:/opt/conda/envs/building-footprint-analysis/bin"
 
 # Create a non-root user and switch to that user
 RUN useradd -m gisuser
@@ -18,7 +18,7 @@ USER gisuser
 # Set the working directory to /home/gisuser
 WORKDIR /home/gisuser
 COPY utils.py .
-COPY haiti_building_analysis.ipynb .
+COPY basic_analysis.ipynb .
 
 # Expose the JupyterLab port
 EXPOSE 8888

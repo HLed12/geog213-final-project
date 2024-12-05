@@ -1,4 +1,4 @@
-name: assignment-7
+name: building-footprint-analysis
 channels:
   - conda-forge
 dependencies:
