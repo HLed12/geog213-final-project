@@ -29,7 +29,7 @@ Now we will run the image and create the docker container. Since we want to make
 
 Run the following:
 ```
-docker run -v $(pwd):/home/gisuser -p 8888:8888 -p 8787:8787 hleduc12/assignment-7:latest
+docker run -v $(pwd):/home/gisuser/saved -p 8888:8888 -p 8787:8787 hleduc12/building-footprint-analysis:latest
 ```
 (pwd) connects your current directory to the container which allows you to save any edits. You can hard-code the file path to a different directory if you desire. However, (pwd) is the suggested approach.
 
@@ -39,6 +39,6 @@ Since we are also using a dask client, we must use a second port, hence the -p 8
  
 Going back to your terminal where you just ran the above code. Copy and paste one of the bottom 3 links into a browser if the container does not automatically open JupyterLab. Click the first kernel.
 
-Now, on the left hand side of the Jupyter interface, you should see the Dockerfile, environment.yml, utils.py, and README.md that were used to create this image. Additionally, you will see the 'building_analysis' file. Open it to see the analysis.
+Now, on the left hand side of the Jupyter interface, you should see the Dockerfile, environment.yml, utils.py, and README.md that were used to create this image. Additionally, you will see the 'basic_analysis' file. Open it to see the analysis.
 
-Note: the Dockerfile has a 'copy building_analysis .' and 'copy utils.py .' portion because the jupyter notebook was fully created before the image/container could successfully run (ran into several bugs). The dockerfile technically should not contain this, and the edits should have been made then re-pushed to the image.
+Note: the Dockerfile has a 'copy basic_analysis .' and 'copy utils.py .' portion because the jupyter notebook was fully created before the image/container could successfully run (ran into several bugs). The dockerfile technically should not contain this, and the edits should have been made then re-pushed to the image.
