@@ -9,36 +9,24 @@ Purpose:
 - Analyze the Census block for trends.
 
 
+Understanding what to use:
+There are 2 ways to approach doing this work:
 
-## Step-by-step guide to running the container
+The ALL function method, which utilizes the following functions:
+- get_s3_keys_all()
+- get_US_structures_all()
 
-Instead of creating the docker image using the `dockerfile` and `environment.yml` file, you will instead pull the pre-existing image from my personal Docker Hub account (hleduc12).
+The SPECIFIED function method, which utilizes the following functions:
+- get_s3_keys_specified()
+- get_US_structures_specified()
 
-In your terminal, run the following:
-```
-docker pull hleduc12/building-footprint-analysis:latest
-```
+The All method should be taken and will be the main jupyter notebook that is used.
 
-After some time, the image will be built. A common error is not having Docker running on your system, ensure it is.
+However, since the dataset is always changing, there is a chance the data will be too large for users to run. Currently, 12/8/2024, all the parquet files require ~20 GiBs of space. To review if this has changed, check the following site:
+https://source.coop/wherobots/usa-structures/geoparquet
 
-Run the following code to make sure it has been built to your local machine
-```
-docker images
-```
-Now we will run the image and create the docker container. Since we want to make new files and be able to access them after the container is closed, we must mount a folder within the environment to the current directory. Make sure you are in your desired directory!
+If you do not have space for all of the .parquet file sizes (on right side of feature box), then do NOT use the 'building_analysis_ALL' jupyter notebook. Instead, use the 'building_analysis_SPECIFIED' jupyter notebook. You will manually have to update certain aspects, the notebook will go into more detail. Understand, the SPECIFIED jupyter notebook will not be a complete analysis, instead, you are expected to copy and paste code from the ALL jupyter notebook if you wish to follow similar analysis patterns. The biggest concern is not knowing which parquet files cover which portion of the United States. This will require the user to do trial-and-error. Which means the analysis portion of this project may not work for the parquet file you download, which is why the SPECIFIED notebook will only give the layout and will require the USER to do the heavy lifting.
 
-Run the following:
-```
-docker run -v $(pwd):/home/gisuser/saved -p 8888:8888 -p 8787:8787 hleduc12/building-footprint-analysis:latest
-```
-(pwd) connects your current directory to the container which allows you to save any edits. You can hard-code the file path to a different directory if you desire. However, (pwd) is the suggested approach.
 
--p 8888:8888 sets your local machine to be connected (or 'talk') with the port 8888 where the container will be running.
 
-Since we are also using a dask client, we must use a second port, hence the -p 8787:8787. This will allow you to see how your computer is handling the computations of the data. After running the chunk regarding Client, you can click the outputted link to see this dask dashboard.
- 
-Going back to your terminal where you just ran the above code. Copy and paste one of the bottom 3 links into a browser if the container does not automatically open JupyterLab. Click the first kernel.
-
-Now, on the left hand side of the Jupyter interface, you should see the Dockerfile, environment.yml, utils.py, and README.md that were used to create this image. Additionally, you will see the 'basic_analysis' file. Open it to see the analysis.
-
-Note: the Dockerfile has a 'copy basic_analysis .' and 'copy utils.py .' portion because the jupyter notebook was fully created before the image/container could successfully run (ran into several bugs). The dockerfile technically should not contain this, and the edits should have been made then re-pushed to the image.
+Additional Note: the 'testing' folder is not crucial at the time this project is posted, however, this dataset is constantly changing. Within just one week of working on this project, the entire dataset went from 3.2 GiBs to 20 GiBs, with different file-naming patterns. Because of reasons such as that, the testing folder/sub-directory will allow users to possibly troubleshoot future issues with the code. It can also allow users to use these functions and change them for a different dataset.
