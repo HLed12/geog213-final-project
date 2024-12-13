@@ -20,6 +20,7 @@ WORKDIR /home/gisuser
 COPY utils.py .
 COPY worcester_analysis.ipynb .
 COPY customization_advice.ipynb .
+COPY basic_analysis.ipynb .
 
 # Make a data directory with only the Worcester data inside it
 RUN mkdir -p data/Worcester
