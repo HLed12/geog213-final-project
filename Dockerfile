@@ -18,7 +18,6 @@ USER gisuser
 # Set the working directory to /home/gisuser
 WORKDIR /home/gisuser
 COPY utils.py .
-COPY worcester_analysis.ipynb .
 COPY customization_advice.ipynb .
 COPY basic_analysis.ipynb .
 
