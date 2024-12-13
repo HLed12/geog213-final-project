@@ -154,7 +154,7 @@ def get_US_structures_specified(bucket_name, link_list, s3_client, local_path, b
     """
 
     # Since I updated get_s3_keys to handle a list of links, we do not need to worry about iterating through 'links' here.
-    keys = get_s3_keys(bucket_name, link_list, s3_client)
+    keys = get_s3_keys_specified(bucket_name, link_list, s3_client)
 
 
     for key in keys:

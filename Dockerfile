@@ -17,10 +17,10 @@ USER gisuser
 
 # Set the working directory to /home/gisuser
 WORKDIR /home/gisuser
-COPY all_utils.py .
-COPY singular_utils.py .
-COPY basic_analysis_SPECIFIED.ipynb .
-COPY basic_analysis_ALL.ipynb .
+COPY utils.py .
+COPY worcester_analysis.ipynb .
+COPY customization_advice.ipynb .
+
 
 # Expose the JupyterLab port
 EXPOSE 8888
