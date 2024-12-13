@@ -189,21 +189,3 @@ def get_US_structures_specified(bucket_name, link_list, s3_client, local_path, b
     structures_ddf = dg.read_parquet(local_file_names, gather_spatial_partitions=False, blocksize = blocksize)
 
     return structures_ddf
-
-
-
-
-    # OLD CODE: To be removed in future
-
-    # OLD
-    # BEFORE UPDATED get_s3_keys function:
-    # for i in links:  # go through each unique file possibility (actually dataset skips numbers but still ranges from 0 to 200)
-    #     keys = get_s3_keys(bucket_name, links, s3_client) # Try with links, however, this is a list of links so may need to do the following:
-        ### possible_link = f"{prefix}{i}{endfix}"
-        ### keys = get_s3_keys(bucket_name, possible_link, s3_client) # This is just one link:
-
-
-    # OLD
-    # MAKE A LIST WITH EACH LINK
-    # local_file_names = [f"{str(i)}.split("/")[-1]" for i in links]  # the data/file on local drive will name as: "part-00000-(ending)"
-    #                                                                 # because of that, must split the links list to reflect this

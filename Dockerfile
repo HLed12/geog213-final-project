@@ -21,6 +21,10 @@ COPY utils.py .
 COPY worcester_analysis.ipynb .
 COPY customization_advice.ipynb .
 
+# Make a data directory with only the Worcester data inside it
+RUN mkdir -p data/Worcester
+COPY data/Worcester /home/gisuser/data/Worcester
+
 
 # Expose the JupyterLab port
 EXPOSE 8888
