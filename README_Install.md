@@ -4,7 +4,7 @@ Instead of creating the docker image using the `dockerfile` and `environment.yml
 
 In your terminal, run the following:
 ```
-docker pull hleduc12/building-footprint-analysis:latest
+docker pull hleduc12/us_structures_analysis:latest
 ```
 
 After some time, the image will be built. A common error is not having Docker running on your system, ensure it is.
@@ -17,9 +17,10 @@ Now we will run the image and create the docker container. Since we want to make
 
 Run the following:
 ```
-docker run -v $(pwd):/home/gisuser/saved -p 8888:8888 -p 8787:8787 hleduc12/building-footprint-analysis:latest
+docker run -v $(pwd):/home/gisuser/saved -p 8888:8888 -p 8787:8787 hleduc12/us_structures_analysis:latest
 ```
 (pwd) connects your current directory to the container which allows you to save any edits. You can hard-code the file path to a different directory if you desire. However, (pwd) is the suggested approach.
+MAKE SURE TO MOVE ANY FILES YOU DESIRE TO SAVE INTO THE 'saved' FOLDER!!
 
 -p 8888:8888 sets your local machine to be connected (or 'talk') with the port 8888 where the container will be running.
 
@@ -27,6 +28,6 @@ Since we are also using a dask client, we must use a second port, hence the -p 8
  
 Going back to your terminal where you just ran the above code. Copy and paste one of the bottom 3 links into a browser if the container does not automatically open JupyterLab. Click the first kernel.
 
-Now, on the left hand side of the Jupyter interface, you should see the Dockerfile, environment.yml, utils.py, and README.md that were used to create this image. Additionally, you will see the 'basic_analysis' file. Open it to see the analysis.
+Now, on the left hand side of the Jupyter interface, you should see the all the files that were used to create this image. Open the analysis_ALL file to review the specific project analysis on Worcester. Open the analysis_SPECIFIED for details on how you can reproduce this approach with another dataset OR location, it also details ways to combat the large file downloads.
 
-Note: the Dockerfile has a 'copy basic_analysis .' and 'copy utils.py .' portion because the jupyter notebook was fully created before the image/container could successfully run (ran into several bugs). The dockerfile technically should not contain this, and the edits should have been made then re-pushed to the image.
+Note: the Dockerfile has several COPY lines because the jupyter notebook was fully created before the image/container could successfully run (ran into several bugs). The dockerfile technically should not contain this, and the edits should have been made then re-pushed to the image.
