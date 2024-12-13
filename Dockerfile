@@ -8,8 +8,8 @@ COPY environment.yml /home/environment.yml
 RUN conda env create -f /home/environment.yml
 
 # Activate the Conda environment
-RUN echo "conda activate building-footprint-analysis" >> ~/.bashrc
-ENV PATH="$PATH:/opt/conda/envs/building-footprint-analysis/bin"
+RUN echo "conda activate us_structures_analysis" >> ~/.bashrc
+ENV PATH="$PATH:/opt/conda/envs/us_structures_analysis/bin"
 
 # Create a non-root user and switch to that user
 RUN useradd -m gisuser

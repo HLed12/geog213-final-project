@@ -1,4 +1,4 @@
-name: building-footprint-analysis
+name: us_structures_analysis
 channels:
   - conda-forge
 dependencies:
