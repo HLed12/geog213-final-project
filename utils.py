@@ -64,7 +64,7 @@ def get_US_structures_all(s3_client, local_path, blocksize="256M"):
 
 
     for key in keys:
-        local_fname = f"{local_path}/{key.split("/")[-1]}"  # May need to change
+        local_fname = f"{local_path}/{key.split('/')[-1]}"  # May need to change
         if not os.path.exists(local_path):
             os.mkdir(local_path)
 
@@ -74,7 +74,7 @@ def get_US_structures_all(s3_client, local_path, blocksize="256M"):
             try:
                 s3_client.download_file(Bucket = bucket_name,
                                         Key = key,
-                                        Filename = f"./data/{key.split("/")[-1]}"  # May need to change
+                                        Filename = f"./data/{key.split('/')[-1]}"  # May need to change
                                     )
                 print("Download complete.")
             except ClientError as error:
@@ -90,7 +90,7 @@ def get_US_structures_all(s3_client, local_path, blocksize="256M"):
 
     # UPDATE, Reading documentation file explains it needs to be a list of file paths so we should copy the format for Hamed's example but for each "link"
     # that we add to this variable.
-    local_file_names = [f"{local_path}/{key.split("/")[-1]}" for key in keys] # Now, it will be "(local_path)/part-(specified-number)-(ending)"
+    local_file_names = [f"{local_path}/{key.split('/')[-1]}" for key in keys] # Now, it will be "(local_path)/part-(specified-number)-(ending)"
 
     structures_ddf = dg.read_parquet(local_file_names, gather_spatial_partitions=False, blocksize = blocksize)
 
@@ -158,7 +158,7 @@ def get_US_structures_specified(bucket_name, link_list, s3_client, local_path, b
 
 
     for key in keys:
-        local_fname = f"{local_path}/{key.split("/")[-1]}"  # May need to change
+        local_fname = f"{local_path}/{key.split('/')[-1]}"  # May need to change
         if not os.path.exists(local_path):
             os.mkdir(local_path)
 
@@ -168,7 +168,7 @@ def get_US_structures_specified(bucket_name, link_list, s3_client, local_path, b
             try:
                 s3_client.download_file(Bucket = bucket_name,
                                         Key = key,
-                                        Filename = f"./data/{key.split("/")[-1]}"  # May need to change
+                                        Filename = f"./data/{key.split('/')[-1]}"  # May need to change
                                     )
                 print("Download complete.")
             except ClientError as error:
@@ -184,7 +184,7 @@ def get_US_structures_specified(bucket_name, link_list, s3_client, local_path, b
 
     # UPDATE, Reading documentation file explains it needs to be a list of file paths so we should copy the format for Hamed's example but for each "link"
     # that we add to this variable.
-    local_file_names = [f"{local_path}/{key.split("/")[-1]}" for key in keys] # Now, it will be "(local_path)/part-(specified-number)-(ending)"
+    local_file_names = [f"{local_path}/{key.split('/')[-1]}" for key in keys] # Now, it will be "(local_path)/part-(specified-number)-(ending)"
 
     structures_ddf = dg.read_parquet(local_file_names, gather_spatial_partitions=False, blocksize = blocksize)
 
