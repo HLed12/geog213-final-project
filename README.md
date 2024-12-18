@@ -22,6 +22,7 @@ To see how a user can:
 - 1. Download a different dataset
 - 2. Learn what needs to be changed in the utils.py file IF the source.coop dataset changes
 - 3. Not install ALL of the data files, plus possible issues this could raise.
+
 Then focus on the customization_advice.ipynb. Bullet 2 can also review the 'testing' folder.
 
 No matter what, you should still review both jupyter notebooks. There will be outputs and plenty of resourceful information in both.
