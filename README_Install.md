@@ -29,4 +29,4 @@ Since we are also using a dask client, we must use a second port, hence the -p 8
  
 Going back to your terminal where you just ran the above code. Copy and paste one of the bottom 3 links into a browser if the container does not automatically open JupyterLab. Click the first kernel.
 
-Now, on the left hand side of the Jupyter interface, you should see the all the files that were used to create this image. Remember to move desired files to the 'saved' folder if you make edits you wish to keep//access on your local machine.
+Now, on the left hand side of the Jupyter interface, you should see the data and testing folders along with both notebooks and the utilities file. Remember to move desired files to the 'saved' folder if you make edits you wish to keep//access on your local machine. Also, if you run any of the notebooks inside your 'saved' folder, you will need to move the 'data' to it as well (this will save to your computer, do not run the notebooks inside your 'saved' folder if you do not wish to save the data).
