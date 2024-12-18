@@ -17,10 +17,11 @@ Now we will run the image and create a docker container. Since we want to edit f
 
 Run the following:
 ```
-docker run -v $(pwd):/home/gisuser/saved -p 8888:8888 -p 8787:8787 hleduc12/us_structures_analysis:latest
+docker run -it -v $(pwd):/home/gisuser/saved -p 8888:8888 -p 8787:8787 hleduc12/us_structures_analysis:latest
 ```
 (pwd) connects your current directory to the container which allows you to save any edits. You can hard-code the file path to a different directory if you desire. However, (pwd) is the suggested approach.
-MAKE SURE TO MOVE ANY FILES YOU DESIRE TO SAVE INTO THE 'saved' FOLDER!! Additionally, if you do not wish to mount a folder, delete '/saved' from the above code run.
+MAKE SURE TO MOVE ANY FILES YOU DESIRE TO SAVE INTO THE 'saved' FOLDER!! 
+Additionally, if you do not wish to mount a folder, delete '-v $...' through '/saved' from the above code run.
 
 -p 8888:8888 sets your local machine to be connected (or 'talk') with the port 8888 where the container/JupyterLab will be running.
 

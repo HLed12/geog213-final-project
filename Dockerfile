@@ -25,6 +25,9 @@ COPY main_analysis.ipynb .
 RUN mkdir -p data/Worcester
 COPY data/Worcester /home/gisuser/data/Worcester
 
+# Make a data directory with the testing work
+RUN mkdir -p testing
+COPY testing/get_s3_keys.ipynb /home/gisuser/testing/get_s3_keys.ipynb
 
 # Expose the JupyterLab port
 EXPOSE 8888
