@@ -3,41 +3,40 @@ Geog 213 Advanced Geospatial Analytics w/ Python - Final Project
 US Structures from Oak Ridge National Laboratory data set
 
 
-------------------------------------------------------------------------------------------------------------------------------------------------
-------2020 Census Block Maps and US Structures from Oak Ridge National Laboratory data sets----- DELETE IF DO NOT SUCCESSFULLY ADD CENSUS BLOCKS
-------------------------------------------------------------------------------------------------------------------------------------------------
-
 Purpose:
-- Reproducibility: This project offers different methods for users to install the US Structures dataset, in case the total size cannot be stored. Additionally, it attempts to give users a walkthrough on grabbing any source.coop dataset through the S3 link (focused on geoparquet data but can easily be altered).
-- Advise users on possible errors/concerns associated with not installing the entire dataset. While still providing an example anlysis surrounding the city of Worcester.
+- Reproducibility: This project offers different methods for users to install the US Structures dataset, in case the total size cannot be stored. Additionally, it provides users with a walkthrough on grabbing any source.coop dataset through the AWS S3 link (focused on geoparquet data but can easily be altered).
+- Advise users on possible errors/concerns associated with not installing the entire dataset. While still providing an example analysis.
 - Investigate the US Structure dataset integrity. Showing users how to specify a location within the dataset columns or using a shapefile. Comparing the two results.
-- Analysis: Introduce an analysis for the city of Worcester, MA.
-- Future Implementation: Download/Compare with 2020 Census blocks inside the city. Analyze for trends.
+- Although computational limits are present, show users different ways to filter the dataset for analysis and provide plotting examples.
+* This project has a lot of opportunities for fine-tuning and future additions.
+
+First Steps:
+- Open the customization_advice.ipynb file and read through it to gather an overall understanding of the download process and data.
+- Next, open the main_analysis.ipynb file and examine possible issues, advice, and initial analyses.
 
 
-Understanding what to use:
-There are 2 ways to approach doing this work:
-
-The worcester_analysis.ipynb method, which utilizes the following functions:
-- get_s3_keys_all()
-- get_US_structures_all()
-
-The customization_adivce.ipynb method, which utilizes the following functions:
-- get_s3_keys_specified()
-- get_US_structures_specified()
-
-To view the analysis associated with this project, review worcester_analysis.ipynb. The Shapefile data is included in the image to avoid confusion. You must still install the US Structures data.
+Understanding the install process:
+There are 2 ways to approach doing this work. Downloading all of the dataset (main_analysis) or downloading sections of it (customization_advice).
 
 To see how a user can: 
-- 1. Not install ALL of the data files 
-- 2. How to download a different dataset
-- 3. And advice if you wish to analyze the US Structures dataset without installing ALL of the data files
-Then review, customization_advice.ipynb
+- 1. Download a different dataset
+- 2. Learn what needs to be changed in the utils.py file IF the source.coop dataset changes
+- 3. Not install ALL of the data files, plus possible issues this could raise.
+Then focus on the customization_advice.ipynb. Bullet 2 can also review the 'testing' folder.
 
-Since the dataset is always changing, there is a chance the data will be too large for users to run. Currently, 12/8/2024, all the parquet files require ~20 GiBs of space. To review if this has changed, check the following site:
+No matter what, you should still review both jupyter notebooks. There will be outputs and plenty of resourceful information in both.
+
+At this point, you may be asking yourself, 'Why would I want to install only some of the data?'...
+
+This dataset is always changing, there is a chance the data will be too large for users to download. Currently, 12/8/2024, all the parquet files require ~20 GiBs of space. However, one week prior, it was only ~3.2 GiBs. 
+To review if this has changed, check the following site:
 https://source.coop/wherobots/usa-structures/geoparquet
 
-If you do not have space for all of the .parquet file sizes (on right side of feature box on source.coop page), then do NOT run the code blocks in 'worcester_analysis' jupyter notebook (you can still open it and review the outputs that were found from the analysis). Instead, use the 'customization_advice' jupyter notebook. You will manually have to update certain aspects. Understand, the 'customization_advice' jupyter notebook will not be a complete analysis, instead, you are expected to copy and paste code from the 'worcester_analysis' jupyter notebook if you wish to follow similar analysis patterns. The biggest concern is not knowing which parquet files cover which portion of the United States. This will require the user to do trial-and-error. Which means the analysis portion of this project may not work for the parquet file you download (i.e., if parquet file doesn't cover Massachusetts), which is why the 'customization_advice' notebook will only give the layout and will require the USER to do the heavy lifting.
+
+Understand, the 'customization_advice' jupyter notebook will not be an analysis. You will need to refer to the 'main_analysis' if you wish to follow similar analysis patterns. The biggest concern for partial install is if the user has a desired area in mind. At this time, it is not possible to tell which portion of the United States is covered by each parquet file. This will require the user to do trial-and-error. However, if the user isn't deadset on a location, they can install one or two parquet files and plot based on partitions to start their analysis.
 
 
-Additional Note: the 'testing' folder is not crucial at the time this project is posted, however, this dataset is constantly changing. Within just one week of working on this project, the entire dataset went from 3.2 GiBs to 20 GiBs, with different file-naming patterns. Because of reasons such as that, the testing folder/sub-directory will allow users to possibly troubleshoot future issues with the code.
+
+Additional Note: the 'testing' folder is not crucial at the time this project is posted, however, this dataset size and file-naming patterns changed from an update. The testing folder will allow users to possibly troubleshoot future issues from future updates.
+
+The Shapefile data for Worcester is included in the image to avoid confusion.
