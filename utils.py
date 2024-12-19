@@ -100,7 +100,7 @@ def get_US_structures_all(s3_client, local_path, blocksize="256M"):
 
 def get_s3_keys_specified(bucket_name, prefix_list, client):
     """
-    This function returns all the S3 keys associated with the entire
+    This function returns all the S3 keys associated with a specified list from the
     USA Structures Dataset by Oak Ridge National Laboratory on Source Cooperative. This function
     only lists the files in GeoParquet format.
     For more information about the dataset, visit 
